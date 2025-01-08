@@ -1,31 +1,105 @@
+/* Base styling for the App */
 .App {
-  border: 1px solid #3d3d3d;
-  margin: 50px 30px;
-  padding: 25px 15px;
+  max-width: 400px;
+  margin: 50px auto;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  background-color: #f8f9fa;
+  font-family: Arial, sans-serif;
+  text-align: center;
 }
 
+/* Header styling */
+.App h2 {
+  font-size: 1.5rem;
+  color: #343a40;
+  margin-bottom: 20px;
+}
+
+/* Container for to-do list items */
 .to-do-container {
   display: flex;
   flex-direction: column;
+  gap: 10px;
 }
 
+/* List container */
+.to-do-container ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+/* Individual list items */
 .to-do-container ul li {
-  width: 170px;
-  overflow-wrap: break-word;
-  list-style-type: "👉";
+  width: 70%;
+  text-align: left;
   cursor: pointer;
+  padding: 5px 10px;
+  border-radius: 5px;
+  transition: background-color 0.3s, transform 0.2s;
 }
 
+.to-do-container ul li:hover {
+  background-color: #e9ecef;
+  transform: scale(1.02);
+}
+
+/* Styling for completed items */
 .done {
   text-decoration: line-through;
+  color: #adb5bd;
 }
 
+/* Wrapper for list items */
 .item {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  padding: 5px;
+  border: 1px solid #dee2e6;
+  border-radius: 5px;
+  background-color: #ffffff;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
 }
 
+/* Trash icon */
 .trash {
+  font-size: 0.9rem;
+  color: #dc3545;
   cursor: pointer;
+  margin-left: 10px;
+  transition: color 0.3s, transform 0.2s;
+}
+
+.trash:hover {
+  color: #b02a37;
+  transform: rotate(15deg);
+}
+
+/* Input field */
+.to-do-container input {
+  padding: 10px;
+  font-size: 1rem;
+  border: 1px solid #ced4da;
+  border-radius: 5px;
+  margin-bottom: 10px;
+  width: calc(100% - 20px);
+}
+
+/* Button styling */
+.to-do-container button {
+  padding: 10px 20px;
+  font-size: 1rem;
+  color: #fff;
+  background-color: #007bff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.to-do-container button:hover {
+  background-color: #0056b3;
 }
