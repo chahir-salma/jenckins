@@ -2,8 +2,8 @@
 .background {
   background-image: url('./images/devops1.jpg');
   background-position: center;
-  background-repeat: no-repeat; /* Prevent repeating */
-  background-size: cover; /* Ensure the image covers the entire area */
+  background-repeat: no-repeat;
+  background-size: cover;
   height: 100vh;
   display: flex;
   flex-direction: column;
@@ -113,6 +113,5 @@
 }
 
 .to-do-container button:hover {
-  background-color: #0056b3;
   background-color: #0056b3;
 }

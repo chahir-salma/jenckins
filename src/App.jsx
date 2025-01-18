@@ -7,7 +7,7 @@ function App() {
 
   const inputRef = useRef();
 
-  // Function to add a new todo item
+  // Function to add a new item
   const handleAddTodo = () => {
     const text = inputRef.current.value;
     const newItem = { completed: false, text };
@@ -15,14 +15,14 @@ function App() {
     inputRef.current.value = "";
   };
 
-  // Function to toggle the completion state of a todo item
+  // Function to toggle the completion state of a item
   const handleItemDone = (index) => {
     const newTodos = [...todos];
     newTodos[index].completed = !newTodos[index].completed;
     setTodos(newTodos);
   };
 
-  // Function to delete a todo item by its index
+  // Function to delete a item by its index
   const handleDeleteItem = (index) => {
     const newTodos = [...todos];
     newTodos.splice(index, 1);
