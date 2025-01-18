@@ -36,18 +36,26 @@ function App() {
         <h2>To Do List</h2>
         <div className="to-do-container">
           <ul>
-            {todos.map(({ id, text, completed }) => {
-              return (
-                <div className="item" key={id}>
-                  <li
-                    className={completed ? "done" : ""}
-                    onClick={() => handleItemDone(id)}>
-                    {text}
-                  </li>
-                  <span onClick={() => handleDeleteItem(id)} className="trash">❌</span>
-                </div>
-              );
-            })}
+            {todos.map(({ id, text, completed }) => (
+              <li key={id} className={completed ? "done" : ""}>
+                {/* Button for toggling completion state */}
+                <button
+                  onClick={() => handleItemDone(id)}
+                  onKeyDown={(e) => e.key === 'Enter' && handleItemDone(id)}
+                  aria-pressed={completed}
+                >
+                  {text}
+                </button>
+                {/* Button for deleting the item */}
+                <button
+                  onClick={() => handleDeleteItem(id)}
+                  onKeyDown={(e) => e.key === 'Enter' && handleDeleteItem(id)}
+                  aria-label={`Delete ${text}`}
+                >
+                  ❌
+                </button>
+              </li>
+            ))}
           </ul>
           <input ref={inputRef} placeholder="Enter item..." />
           <button onClick={handleAddTodo}>Add</button>
