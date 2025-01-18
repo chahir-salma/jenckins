@@ -31,7 +31,7 @@ function App() {
 
   return (
     <div className="background">
-      <h1 className="title">To Do List for DevOps Test</h1>
+      <h1 className="title">Pipline Its works</h1>
       <div className="App">
         <h2>To Do List</h2>
         <div className="to-do-container">
