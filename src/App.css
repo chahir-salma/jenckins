@@ -1,6 +1,19 @@
 /* Base styling for the App */
+.background {
+  background-image: url('./images/devops1.jpg');
+  background-position: center;
+  background-repeat: no-repeat; /* Prevent repeating */
+  background-size: cover; /* Ensure the image covers the entire area */
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: start;
+  padding-top: 20px;
+}
+
 .App {
-  max-width: 400px;
+  width: 600px;
   margin: 50px auto;
   padding: 20px;
   border-radius: 8px;
@@ -10,28 +23,31 @@
   text-align: center;
 }
 
-/* Header styling */
+
+.title {
+  text-align: center;
+  margin-bottom: 20px;
+  color: white;
+}
+
 .App h2 {
   font-size: 1.5rem;
   color: #343a40;
   margin-bottom: 20px;
 }
 
-/* Container for to-do list items */
 .to-do-container {
   display: flex;
   flex-direction: column;
   gap: 10px;
 }
 
-/* List container */
 .to-do-container ul {
   list-style: none;
   padding: 0;
   margin: 0;
 }
 
-/* Individual list items */
 .to-do-container ul li {
   width: 70%;
   text-align: left;
@@ -46,13 +62,11 @@
   transform: scale(1.02);
 }
 
-/* Styling for completed items */
 .done {
   text-decoration: line-through;
   color: #adb5bd;
 }
 
-/* Wrapper for list items */
 .item {
   display: flex;
   justify-content: space-between;
@@ -64,7 +78,6 @@
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
 }
 
-/* Trash icon */
 .trash {
   font-size: 0.9rem;
   color: #dc3545;
@@ -76,9 +89,9 @@
 .trash:hover {
   color: #b02a37;
   transform: rotate(15deg);
+
 }
 
-/* Input field */
 .to-do-container input {
   padding: 10px;
   font-size: 1rem;
@@ -88,7 +101,6 @@
   width: calc(100% - 20px);
 }
 
-/* Button styling */
 .to-do-container button {
   padding: 10px 20px;
   font-size: 1rem;
@@ -101,5 +113,6 @@
 }
 
 .to-do-container button:hover {
+  background-color: #0056b3;
   background-color: #0056b3;
 }
