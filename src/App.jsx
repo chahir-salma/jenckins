@@ -10,22 +10,22 @@ function App() {
   // Function to add a new item
   const handleAddTodo = () => {
     const text = inputRef.current.value;
-    const newItem = { completed: false, text };
+    const newItem = { id: Date.now(), completed: false, text }; // Use Date.now() for a unique ID
     setTodos([...todos, newItem]);
     inputRef.current.value = "";
   };
 
-  // Function to toggle the completion state of a item
-  const handleItemDone = (index) => {
-    const newTodos = [...todos];
-    newTodos[index].completed = !newTodos[index].completed;
+  // Function to toggle the completion state of an item
+  const handleItemDone = (id) => {
+    const newTodos = todos.map(todo =>
+      todo.id === id ? { ...todo, completed: !todo.completed } : todo
+    );
     setTodos(newTodos);
   };
 
-  // Function to delete a item by its index
-  const handleDeleteItem = (index) => {
-    const newTodos = [...todos];
-    newTodos.splice(index, 1);
+  // Function to delete an item by its ID
+  const handleDeleteItem = (id) => {
+    const newTodos = todos.filter(todo => todo.id !== id);
     setTodos(newTodos);
   };
 
@@ -36,16 +36,15 @@ function App() {
         <h2>To Do List</h2>
         <div className="to-do-container">
           <ul>
-            {todos.map(({ text, completed }, index) => {
+            {todos.map(({ id, text, completed }) => {
               return (
-                <div className="item">
+                <div className="item" key={id}>
                   <li
-                    key={index}
                     className={completed ? "done" : ""}
-                    onClick={() => handleItemDone(index)}>
+                    onClick={() => handleItemDone(id)}>
                     {text}
                   </li>
-                  <span onClick={() => handleDeleteItem(index)} className="trash">❌</span>
+                  <span onClick={() => handleDeleteItem(id)} className="trash">❌</span>
                 </div>
               );
             })}
