@@ -31,9 +31,10 @@ function App() {
 
   return (
     <div className="background">
-      <h1 className="title">Pipline Its works</h1>
+      <h1 className="title">Pipline Its works with couvrage</h1>
       <div className="App">
         <h2>To Do List</h2>
+        <p>{todos.length}</p>
         <div className="to-do-container">
           <ul>
             {todos.map(({ id, text, completed }) => (
