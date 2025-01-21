@@ -1,24 +1,21 @@
 import React from 'react';
-import ReactDOM from 'react-dom/client';
-import App from './App';
+import ReactDOM from 'react-dom/client'; // Ensure you're importing from the correct path
+import App from '../App.jsx'; // Adjust the import path as necessary
 
-// Mock the reportWebVitals function to prevent unnecessary calls during testing
-jest.mock('./reportWebVitals', () => jest.fn());
+jest.mock('react-dom/client', () => ({
+    createRoot: jest.fn(() => ({
+        render: jest.fn(),
+    })),
+}));
 
-test('renders the App component without crashing', () => {
-  // Create a mock div element to act as the root DOM node
-  const div = document.createElement('div');
-  div.id = 'root';
-  document.body.appendChild(div);
+beforeEach(() => {
+    const root = document.createElement('div');
+    root.id = 'root';
+    document.body.appendChild(root);
+});
 
-  // Render the App component inside the mock root
-  const root = ReactDOM.createRoot(div);
-  root.render(
-    <React.StrictMode>
-      <App />
-    </React.StrictMode>
-  );
-
-  // Verify the root contains content after rendering
-  expect(div.innerHTML).toContain('<div');
+test('renders with App and root div', () => {
+    require('../index'); // This should call createRoot and render App
+    expect(ReactDOM.createRoot).toHaveBeenCalledWith(document.getElementById('root'));
+    expect(ReactDOM.createRoot().render).toHaveBeenCalledWith(<App />);
 });

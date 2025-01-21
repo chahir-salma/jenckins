@@ -7,7 +7,7 @@ function App() {
 
   const handleAddTodo = () => {
     const text = inputRef.current.value.trim();
-    if (text) {
+    if (text) { // Prevent adding empty todos
       const newItem = { id: Date.now(), completed: false, text };
       setTodos([...todos, newItem]);
       inputRef.current.value = "";
@@ -28,38 +28,31 @@ function App() {
 
   return (
     <div className="background">
-      <h1 className="title">Pipeline To-Do App</h1>
+      <h1 className="title">Pipeline - It works with coverage</h1>
       <div className="App">
-        <h2>To-Do List</h2>
-        <p>Total Items: {todos.length}</p>
+        <h2>To Do List</h2>
+        <p>Total Items: {todos.length}</p> {/* Updated for clarity */}
         <div className="to-do-container">
           <ul>
             {todos.map(({ id, text, completed }) => (
-              <li key={id} className={`item ${completed ? "done" : ""}`}>
-                <span>{text}</span>
-                <div className="actions">
-                  <button
-                    className="complete-btn"
-                    onClick={() => handleItemDone(id)}
-                    aria-pressed={completed}
-                  >
-                    {completed ? "Undo" : "Done"}
-                  </button>
-                  <button
-                    className="delete-btn"
-                    onClick={() => handleDeleteItem(id)}
-                    aria-label={`Delete ${text}`}
-                  >
-                    ❌
-                  </button>
-                </div>
+              <li key={id} className={completed ? "done" : ""}>
+                <button
+                  onClick={() => handleItemDone(id)}
+                  aria-pressed={completed}
+                >
+                  {text}
+                </button>
+                <button
+                  onClick={() => handleDeleteItem(id)}
+                  aria-label={`Delete ${text}`}
+                >
+                  ❌
+                </button>
               </li>
             ))}
           </ul>
-          <div className="input-container">
-            <input ref={inputRef} placeholder="Enter item..." />
-            <button onClick={handleAddTodo}>Add</button>
-          </div>
+          <input ref={inputRef} placeholder="Enter item..." />
+          <button onClick={handleAddTodo}>Add</button>
         </div>
       </div>
     </div>
