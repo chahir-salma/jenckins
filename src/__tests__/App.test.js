@@ -9,7 +9,7 @@ test('renders To Do List title', () => {
 
 test('renders the total number of items', () => {
   render(<App />);
-  const totalItems = screen.getByText(/Total Items: 0/i); // Adjusted to match updated text
+  const totalItems = screen.getByText(/Total Items: 0/i);
   expect(totalItems).toBeInTheDocument();
 });
 
@@ -23,7 +23,7 @@ test('allows users to add a todo item', () => {
   const todoItem = screen.getByText(/New Todo/i);
   expect(todoItem).toBeInTheDocument();
   
-  const totalItems = screen.getByText(/Total Items: 1/i); // Updated for clarity
+  const totalItems = screen.getByText(/Total Items: 1/i);
   expect(totalItems).toBeInTheDocument();
 });
 
@@ -32,7 +32,7 @@ test('prevents adding empty todo items', () => {
   
   fireEvent.click(screen.getByText(/Add/i));
   
-  const totalItems = screen.getByText(/Total Items: 0/i); // Adjusted to match updated text
+  const totalItems = screen.getByText(/Total Items: 0/i);
   expect(totalItems).toBeInTheDocument();
 });
 
@@ -49,28 +49,32 @@ test('allows users to delete a todo item', () => {
   const deletedTodo = screen.queryByText(/Todo to delete/i);
   expect(deletedTodo).not.toBeInTheDocument();
   
-  const totalItems = screen.getByText(/Total Items: 0/i); // Adjusted to match updated text
+  const totalItems = screen.getByText(/Total Items: 0/i);
   expect(totalItems).toBeInTheDocument();
 });
 
+// Test for toggling completion of a todo item
 test('allows users to toggle completion of a todo item', () => {
-  render(<App />);
-  
-  const input = screen.getByPlaceholderText(/Enter item.../i);
-  fireEvent.change(input, { target: { value: 'Todo to complete' } });
-  fireEvent.click(screen.getByText(/Add/i));
-  
-  const toggleButton = screen.getByText(/Todo to complete/i);
-  
-  // Verify initial state
-  expect(toggleButton).not.toHaveClass('done');
-  
-  // Simulate toggling completion
-  fireEvent.click(toggleButton);
-  
-  // Verify that the class 'done' is now present
-  expect(toggleButton).toHaveClass('done');
-  
-  fireEvent.click(toggleButton); // Toggle back
-  expect(toggleButton).not.toHaveClass('done');
+    render(<App />);
+    
+    const input = screen.getByPlaceholderText(/Enter item.../i);
+    fireEvent.change(input, { target: { value: 'Todo to complete' } });
+    fireEvent.click(screen.getByText(/Add/i));
+    
+    const toggleButton = screen.getByText(/Todo to complete/i);
+
+    // Verify initial state
+    expect(toggleButton).not.toHaveClass('done'); // Check that it does not have 'done' initially
+    
+    // Simulate toggling completion
+    fireEvent.click(toggleButton);
+    
+    // Verify that the class 'done' is now present
+    expect(toggleButton.parentElement).toHaveClass('done'); // Check on parent <li> instead
+    
+    // Toggle back
+    fireEvent.click(toggleButton);
+    
+    // Verify that the class 'done' is no longer present
+    expect(toggleButton.parentElement).not.toHaveClass('done');
 });
