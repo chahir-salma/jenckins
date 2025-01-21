@@ -28,7 +28,7 @@ function App() {
 
   return (
     <div className="background">
-      <h1 className="title">Pipeline - It works with coverage</h1>
+      <h1 className="title">Todo List Application By ReactJs</h1>
       <div className="App">
         <h2>To Do List</h2>
         <p>Total Items: {todos.length}</p> {/* Updated for clarity */}
