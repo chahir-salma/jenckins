@@ -1,5 +1,5 @@
 import { render, screen, fireEvent } from '@testing-library/react';
-import App from './App'; // Adjust the path if necessary
+import App from './App';
 
 test('renders To Do List title', () => {
   render(<App />);

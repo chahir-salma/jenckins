@@ -41,9 +41,8 @@
   },
   "jest": {
     "testMatch": [
-        "**/?(*.)+(spec|test).js",
-        "**/?(*.)+(spec|test).jsx",
-        "**/__tests__/**/*.[jt]s?(x)"
+      "**/__tests__/**/*.[jt]s?(x)",
+      "**/?(*.)+(spec|test).[tj]s?(x)"
     ]
-}
+  }
 }
